@@ -106,6 +106,20 @@ def send_message(chat_id, text):
 
 def main():
     """Main function to run the bot."""
+    print("--- Starting MCQ Bot ---")
+    
+    if not TELEGRAM_BOT_TOKEN:
+        print("Critical Error: TELEGRAM_BOT_TOKEN is not set. Exiting.")
+        return
+    else:
+        print(f"TELEGRAM_BOT_TOKEN loaded: ...{TELEGRAM_BOT_TOKEN[-4:]}")
+
+    if not CHAT_IDS or CHAT_IDS == ['']:
+        print("Critical Error: CHAT_IDS environment variable is not set or empty. Exiting.")
+        return
+    else:
+        print(f"Found CHAT_IDS: {CHAT_IDS}")
+        
     all_questions = parse_questions()
     start_index = get_progress()
     
@@ -126,6 +140,7 @@ def main():
     
     save_progress(end_index)
     print(f"Successfully sent questions {start_index + 1} to {end_index}.")
+    print("--- MCQ Bot Finished ---")
 
 if __name__ == "__main__":
     main()
