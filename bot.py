@@ -5,9 +5,9 @@ import json
 import requests
 
 # Read configuration from environment variables
-TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
+TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
 # Chat IDs should be a comma-separated string in the environment variable
-CHAT_IDS = os.environ.get("CHAT_IDS", "").split(',')
+CHAT_IDS = os.environ.get("CHAT_IDS", "").strip().split(',')
 
 QUESTIONS_FILE = "indian_economy.txt"
 PROGRESS_FILE = "progress.txt"
